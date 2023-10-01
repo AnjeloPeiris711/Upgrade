@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Upgrade",
+  "version": "1.0",
+  "description": "Logs network requests",
+  "permissions": [
+    "webRequest",
+    "declarativeNetRequest"
+  ],
+  "icons": {
+      "16": "/static/upgrade16.png",
+      "48": "/static/upgrade48.png",
+      "128": "/static/upgrade128.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "webRequest",
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}
+
+
+
+
+
