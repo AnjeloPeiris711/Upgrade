@@ -12,12 +12,19 @@
       "48": "/static/upgrade48.png",
       "128": "/static/upgrade128.png"
   },
+  "action": {
+    "default_icon": "/static/upgrade16.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; worker-src 'self'"
+  },
   "background": {
     "service_worker": "background.js"
   },
   "permissions": [
     "webRequest",
-    "declarativeNetRequest"
+    "declarativeNetRequest",
+    "tabs"
   ],
   "host_permissions": [
     "<all_urls>"
