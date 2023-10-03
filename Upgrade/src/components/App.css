@@ -12,19 +12,18 @@
   float: left;
   color: #f2f2f2;
   text-align: center;
-  padding: 3px 2px;
+  padding: 1px 6px;
   text-decoration: none;
   font-size: 20px;
 }
 
 .topnav a:hover {
-  background-color: #ddd;
+  
   color: black;
 }
 
 .topnav a.active {
-  background-color: #242424;
-  color: white;
+  color: green;
 }
 main {
     text-align: center;
@@ -46,11 +45,25 @@ button.upgrade-button:hover {
     color: #fff;
 }
 
-footer {
-    text-align: center;
-    padding: 20px 0;
+.icon {
+  /* Define the default color */
+  color: #000; /* Replace with your desired color */
 }
 
-footer p {
-    font-size: 14px;
+.ractive-icon {
+  /* Define the color when the icon is active */
+  color: rgb(34, 212, 72); /* Replace with your desired active color */
+  
+}
+.cactive-icon {
+  /* Define the color when the icon is active */
+  color: rgb(252, 251, 250); /* Replace with your desired active color */
+}
+.factive-icon {
+  /* Define the color when the icon is active */
+  color: rgb(28, 141, 206); /* Replace with your desired active color */
+}
+.sactive-icon {
+  /* Define the color when the icon is active */
+  color: rgb(156, 53, 224); /* Replace with your desired active color */
 }
