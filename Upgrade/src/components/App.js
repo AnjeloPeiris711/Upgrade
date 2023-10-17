@@ -1,13 +1,16 @@
 import React,{Component,useState,useEffect} from "react";
 import { Icon } from '@iconify/react';
+import {Box,Heading} from "@chakra-ui/react"
 import './App.css'
+import TaskTable from "./TaskTable";
+import { updateData } from './data';
 
 function App() {
     const [isActivatedRecord, setIsActivatedRecord] = useState(false);
     const [isActivatedClear, setIsActivatedClear] = useState(false);
     const [isActivatedFilter, setIsActivatedFilter] = useState(false);
     const [isActivatedSearch, setIsActivatedSearch] = useState(false);
-    const [data, setData] = useState([]);
+    // const [data, setData] = useState([]);
 
     const handleRecordClick = () => {
         setIsActivatedRecord(!isActivatedRecord);
@@ -24,12 +27,15 @@ function App() {
     useEffect(() => {
         chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
             if (message.type === "display_data") {
+                console.log(message.data.initiator);
+                const responseMessage = updateData(message.data);
+                sendResponse({ message: responseMessage });
                 // Handle the message and update the data
-                if (message.data) {
-                    setData((prevHistory) => [...prevHistory, message.data]);
-                } else {
-                    console.error("Received message with no data.");
-                }
+                // if (message.data) {
+                //     sendResponse((prevHistory) => [...prevHistory, updateData(message.data)]);
+                // } else {
+                //     console.error("Received message with no data.");
+                // }
             }
         });
     }, []);
@@ -50,17 +56,16 @@ function App() {
                     <Icon className={`sicon ${isActivatedSearch ? 'sactive-icon' : ''}`} icon={`mdi:search`} />
                     </a>
                 </div>
-                <main>
-                    <p>Welcome to the Upgrade Mode interface.</p>
-                    <button className="upgrade-button">Activate</button>
-                </main>
                 <div id="data-div">
-                    <h3>URL History:</h3>
-                    <ul>
+                    <Box maxW="auto" mx="auto" px={6} pt={24} fontSize="13" backgroundColor={"#242424"}>
+                        <Heading mb={10}> Network request</Heading>
+                        <TaskTable/>
+                    </Box>
+                    {/* {/* {/* <ul>
                         {data.map((request, index) => (
-                            <li key={index}>{request.url}</li>
+                            <li key={index}>{request.name}</li>
                         ))}
-                    </ul>
+                    </ul> */}
                 </div>
     </div>
 
